@@ -4,7 +4,9 @@
   "description": "Uses tweenjs to create a Catmull-Rom curve to move a 3d object along. Can be used to pause between several paths.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -22,5 +24,12 @@
   "bugs": {
     "url": "https://github.com/REIGNjs/three-tween-path/issues"
   },
-  "homepage": "https://github.com/REIGNjs/three-tween-path#readme"
+  "homepage": "https://github.com/REIGNjs/three-tween-path#readme",
+  "dependencies": {
+    "@tweenjs/tween.js": "^18.6.4",
+    "three": "^0.129.0"
+  },
+  "devDependencies": {
+    "vite": "^2.3.7"
+  }
 }
