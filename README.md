@@ -1,6 +1,11 @@
 # Three Tween Path
 
-This module uses TweenJs to create a smooth path (Catmull-Rom) through the given JSON path data (includes vertices, duration and delay between segments).
+This module uses TweenJs to create a smooth path (Catmull-Rom) through the given path data (includes vertices, duration and delay between segments).
+
+Install using npm:
+```shell
+npm i three-tween-path
+```
 
 ## Usage
 Import the module and your path data
