@@ -27,6 +27,42 @@ const animate = () => {
 };
 ```
 
+## Path Data
+The path data necessary for the module is in the following structure:
+```js
+const pathData = [
+    {
+        path: [
+            {x: -40, y: 30, z: -17},
+            {x: -43, y: 29, z: -16},
+            {x: -42, y: 29, z: -15} //copy to next path for consistency
+        ],
+        delay: 2000,
+        duration: 5000
+    },
+    {
+        path: [
+            {x: -42, y: 29, z: -15}, //be sure to include the last vector of the previous path
+            {x: -41, y: 29.25, z: -15},
+            {x: -18, y: 28, z: -3}
+        ],
+        delay: 2000,
+        duration: 10000
+    },
+    {
+        path: [
+            {x: -18, y: 28, z: -3},
+            {x: -16.5, y: 28, z: -5},
+            {x: -6, y: 28, z: -6}
+        ],
+        delay: 1000,
+        duration: 8000
+    }
+]
+```
+Always include the last vertices of the previous path in the subsequent path to avoid choppy transitions.
+The duration and delay parameters are measured in milliseconds.
+
 ## Example
 Clone the repository and run
 ```shell
