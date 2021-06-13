@@ -1,6 +1,6 @@
 {
   "name": "three-tween-path",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "description": "Uses tweenjs to create a Catmull-Rom curve to move a 3d object along. Can be used to pause between several paths.",
   "main": "index.js",
   "scripts": {

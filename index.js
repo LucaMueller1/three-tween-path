@@ -1,12 +1,16 @@
 import * as THREE from "three";
 import TWEEN from "@tweenjs/tween.js";
 
-export const PointsPath = () => {
+export const PointsPath = (pathData) => {
   const pointsPath = new THREE.CurvePath();
 
   let vectorArray = [];
-  for (let pos of pathCrafting1) {
-    vectorArray.push(new THREE.Vector3(pos.x, pos.y, pos.z));
+  for (let segment of pathData) {
+    for(let point of segment.path) {
+      vectorArray.push(
+        new THREE.Vector3(point.x, point.y, point.z)
+      );
+    }
   }
 
   const line = new THREE.CatmullRomCurve3(vectorArray);
@@ -16,49 +20,16 @@ export const PointsPath = () => {
   return pointsPath;
 };
 
-export const SingeTweenPath = (object, shape, duration) => {
-  const options = {
-    from: 0,
-    to: 1,
-    duration: shape.duration,
-    start: true,
-    yoyo: false,
-    onStart: onStart ? onStart : () => {},
-    onComplete: onComplete ? onComplete : () => {},
-    onUpdate: () => {},
-    smoothness: 100,
-    easing: TWEEN.Easing.Linear.None,
-  };
+export const LineGeometry = (pointsPath) => {
+  const material = new THREE.LineBasicMaterial({ color: 0x9132a8 });
+  const points = pointsPath.curves.reduce(
+    (p, d) => [...p, ...d.getPoints(20)],
+    []
+  );
 
-  options.duration = options.duration || shape.getLength();
+  const geometry = new THREE.BufferGeometry().setFromPoints(points);
 
-  var tween = new TWEEN.Tween({ distance: options.from })
-    .to({ distance: options.to }, options.duration)
-    .easing(options.easing)
-    .onStart(options.onStart)
-    .onComplete(options.onComplete)
-    .onUpdate(function () {
-      var pathPosition = shape.getPoint(this._object.distance);
-
-      object.position.set(pathPosition.x, pathPosition.y, pathPosition.z);
-
-      object.updateMatrix();
-
-      if (options.onUpdate) {
-        options.onUpdate(this, shape);
-      }
-    })
-    .yoyo(options.yoyo);
-
-  if (options.yoyo) {
-    tween.repeat(Infinity);
-  }
-
-  if (options.start) {
-    tween.start();
-  }
-
-  return tween;
+  return new THREE.Line(geometry, material);
 };
 
 export const MultiTweenPath = (object, pathData, onStart, onComplete) => {

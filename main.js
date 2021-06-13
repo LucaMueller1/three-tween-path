@@ -34,8 +34,22 @@ const material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
 const cone = new THREE.Mesh(geometry, material);
 scene.add(cone);
 
-let sampleTween = TweenRoute.MultiTweenPath(cone, samplePath);
+const onSegmentStart = () => {
+  console.log("Segment start!");
+}
+
+const onSegmentEnd = () => {
+  console.log("Segment end!");
+}
+
+let sampleTween = TweenRoute.MultiTweenPath(cone, samplePath, onSegmentStart, onSegmentEnd);
 sampleTween.start();
+
+//the following is used to render a visible path in the scene
+let pointsPath = TweenRoute.PointsPath(samplePath);
+console.log(pointsPath);
+let line = TweenRoute.LineGeometry(pointsPath);
+scene.add(line);
 
 //animate loop
 const animate = () => {
