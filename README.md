@@ -72,4 +72,4 @@ npm i
 npm start
 ```
 The example is available under localhost:3000
-![image](https://user-images.githubusercontent.com/64702286/121823139-87804c80-cca3-11eb-8408-69260f350d76.png)
+![image](https://user-images.githubusercontent.com/64702286/121824172-76870980-ccaa-11eb-8b84-d53faf893dcf.png)
