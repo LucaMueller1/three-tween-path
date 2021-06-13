@@ -6,7 +6,7 @@ This module uses TweenJs to create a smooth path (Catmull-Rom) through the given
 Import the library, your path data and TweenJs
 ```js
 import TWEEN from "@tweenjs/tween.js";
-import * as TweenRoute from "./index";
+import * as TweenRoute from "three-tween-path";
 import { samplePath } from './samplePath';
 ```
 
