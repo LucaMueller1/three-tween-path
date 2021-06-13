@@ -4,7 +4,7 @@
   "description": "Uses tweenjs to create a Catmull-Rom curve to move a 3d object along. Can be used to pause between several paths.",
   "main": "index.js",
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "vite build",
     "serve": "vite preview"
   },
