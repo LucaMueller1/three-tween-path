@@ -34,6 +34,24 @@ const animate = () => {
 };
 ```
 
+### Callbacks
+Use callbacks according to the implementation in tweenjs. A callback can be implemented like this:
+```js
+const onSegmentStart = () => {
+  //could be used to start a running animation or something similar
+  console.log("Segment start!");
+}
+
+const onSegmentEnd = () => {
+  //could stop the running animation and return to an idle animation
+  console.log("Segment end!");
+}
+
+let sampleTween = TweenRoute.MultiTweenPath(cone, samplePath, onSegmentStart, onSegmentEnd);
+sampleTween.start();
+```
+One callback is run at the beginning of the segment and the other at the end of a segment. Use this to halt any animations or run different kind of tasks.
+
 ## Path Data
 The path data necessary for the module is in the following structure:
 ```js
